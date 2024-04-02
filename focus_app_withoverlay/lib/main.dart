@@ -5,8 +5,7 @@ import 'package:flutter_overlay_window/flutter_overlay_window.dart';
 import 'timerservice.dart';
 import 'homescreen.dart';
 import 'widgets/overlay_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_deep_linking/flutter_deep_linking.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,20 +51,12 @@ class OverlayScreen extends StatelessWidget {
         exit(0);
       },
       onCancel: () {
-        // Trigger the deep link when the cancel button is clicked
-        _launchDeepLink();
+        Navigator.pop(context);
       },
     );
   }
 
-  void _launchDeepLink() async {
-    final String deepLink = '/home';
-    if (await canLaunch(deepLink)) {
-      await launch(deepLink);
-    } else {
-      throw 'Could not launch $deepLink';
-    }
-  }
+  
 }
 
 class MyApp extends StatelessWidget {
